@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= movie.title %> - Movie Library</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0f0f23; color: #e0e0e0; min-height: 100vh; }
+    .container { max-width: 800px; margin: 0 auto; padding: 2rem; }
+    nav { text-align: center; margin-bottom: 2rem; }
+    nav a { color: #ffd700; text-decoration: none; margin: 0 1rem; font-size: 1.1rem; padding: 0.5rem 1.5rem; border: 1px solid #3a3a5c; border-radius: 5px; transition: all 0.3s; }
+    nav a:hover { background: #ffd700; color: #0f0f23; }
+    .movie-detail {
+      background: #1a1a3a; border: 1px solid #3a3a5c; border-radius: 15px; padding: 2.5rem; text-align: center;
+    }
+    .movie-detail .poster { font-size: 6rem; margin-bottom: 1rem; }
+    .movie-detail h1 { color: #ffd700; font-size: 2.2rem; margin-bottom: 0.5rem; }
+    .movie-detail .meta { color: #8888aa; font-size: 1.1rem; margin-bottom: 0.5rem; }
+    .movie-detail .rating { font-size: 1.5rem; color: #ffd700; margin-bottom: 1.5rem; }
+    .movie-detail .desc { color: #c0c0dd; line-height: 1.7; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .btn { display: inline-block; padding: 0.8rem 2rem; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 1rem; cursor: pointer; border: none; transition: opacity 0.3s; }
+    .btn-gold { background: #ffd700; color: #0f0f23; }
+    .btn-gold:hover { opacity: 0.85; }
+    .btn-gray { background: #3a3a5c; color: #e0e0e0; }
+    .btn-gray:hover { opacity: 0.85; }
+    .info { color: #66cc66; margin-top: 1rem; font-size: 0.95rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav><a href="/">Browse</a><a href="/watchlist">My Watchlist</a></nav>
+    <div class="movie-detail">
+      <div class="poster"><%= movie.poster %></div>
+      <h1><%= movie.title %></h1>
+      <div class="meta"><%= movie.year %> · <%= movie.genre %></div>
+      <div class="rating">★ <%= movie.rating %> / 10</div>
+      <p class="desc"><%= movie.desc || movie.title %> is a <%= movie.genre.toLowerCase() %> film from <%= movie.year %> with an impressive <%= movie.rating %> rating on IMDb.</p>
+      <% if (inWatchlist) { %>
+        <p class="info">✅ Already in your watchlist</p>
+        <a href="/watchlist" class="btn btn-gray">View Watchlist</a>
+      <% } else { %>
+        <form method="POST" action="/watchlist/add/<%= movie.id %>" style="display:inline;">
+          <button type="submit" class="btn btn-gold">+ Add to Watchlist</button>
+        </form>
+      <% } %>
+    </div>
+  </div>
+</body>
+</html>
