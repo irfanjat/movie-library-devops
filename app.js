@@ -7,7 +7,7 @@ const PORT = 3001;
 const DATA_FILE = path.join(__dirname, 'movies.json');
 
 const MOVIES = [
-  { id: 1, title: 'The Shawshank Redemption', year: 1994, genre: 'Drama', rating: 9.3, poster: '🎬' },
+  { id: 1, title: 'The Shawshank Redemption', year: 1994, genre: 'Drama & Thriller', rating: 9.3, poster: '🎬' },
   { id: 2, title: 'The Godfather', year: 1972, genre: 'Crime', rating: 9.2, poster: '🎭' },
   { id: 3, title: 'The Dark Knight', year: 2008, genre: 'Action', rating: 9.0, poster: '🦇' },
   { id: 4, title: 'Pulp Fiction', year: 1994, genre: 'Crime', rating: 8.9, poster: '💃' },
